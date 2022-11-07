@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sb_crypto_stepper/enums/last_status_enum.dart';
 import 'package:sb_crypto_stepper/models/stepper_link_model.dart';
 import 'package:sb_crypto_stepper/models/stepper_model.dart';
-import 'package:sb_crypto_stepper/sb_crypto_stepper.dart';
+import 'package:sb_crypto_stepper/stepper_coin_out.dart';
+import 'package:sb_crypto_stepper/stepper_coin_in.dart';
 
 void main() {
   runApp(const MyApp());
@@ -82,34 +83,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
-        child: SbCryptoStepper(
-          title: 'Proses Transaksi',
-          currentProgressIndex: 1,
-          lastStatus: LastStatusEnum.withheld,
-          progressList: [
-            StepperModel(
-              title: 'Pending',
-              description: 'In pool',
-              link: StepperLinkModel(
-                caption: 'View on Explorer',
-                onTap: () {
-                  print('aaaa');
-                },
-              ),
-            ),
-            StepperModel(
-              title: 'Success',
-              description: 'The transaction is accepted in the blockchain',
-            ),
-            StepperModel(
-              title: 'Confirming',
-              description: 'Waiting for 128 block confirmations to finalize it',
-            ),
-            StepperModel(
-              title: 'Processing',
-              description: 'Crediting USDT to your portfolio',
-            )
-          ],
+        // child: StepperCoinOut(
+        //   coinOutStatus: 'Failed',
+        // ),
+        child: StepperCoinIn(
+          coinInStatus: 'Completed',
         ),
       ),
       floatingActionButton: FloatingActionButton(
